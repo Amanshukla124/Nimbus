@@ -3,7 +3,7 @@
   <p>A globally interactive, real-time 3D flight tracking application built for aviation enthusiasts.</p>
 </div>
 
-![Nimbus Landing Page](docs/images/landing.png)
+![Live Globe Map Hero](docs/images/live_map.png)
 
 ## ✨ Features
 
@@ -12,8 +12,8 @@
 - **Live Airport Boards**: Check arrivals, departures, delays, and terminal data for the world's top 50 busiest airports.
 - **Dual Data Sources**: Powered by the **OpenSky Network** for globe data and **Aviation Edge / AviationStack** for scheduled timetables.
 
-### Live Globe Map
-![Live Globe Map](docs/images/live_map.png)
+### Airport Departures & Arrivals
+![Airport Board](docs/images/airport_board.png)
 
 ### Real-Time Flight Details
 ![Flight Details](docs/images/flight_details.png)
