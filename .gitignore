@@ -1,0 +1,26 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+__pycache__/
+
+# Node
+node_modules/
+dist/
+build/
+.npm
+
+# Agent / IDE config
+.claude/
+.cursor/
+.windsurfrules
+.mcp.json
+.opencode.json
+.code-review-graph/
+
+# OS
+.DS_Store

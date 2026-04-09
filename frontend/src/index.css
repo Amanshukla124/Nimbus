@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+/* ============================================================
+   NIMBUS — Atmospheric Intelligence Design System
+   "The Celestial Observer" — DESIGN.md compliant
+   ============================================================ */
+
+@theme {
+  /* === Surface Hierarchy === */
+  --color-surface:                   #0b0e14;
+  --color-surface-dim:               #0b0e14;
+  --color-surface-bright:            #282c36;
+  --color-surface-container-lowest:  #07090e;
+  --color-surface-container-low:     #10131a;
+  --color-surface-container:         #161a21;
+  --color-surface-container-high:    #1c2028;
+  --color-surface-container-highest: #22262f;
+  --color-surface-variant:           #22262f;
+  --color-surface-tint:              #97a9ff;
+
+  /* === Primary: Deep Space Indigo === */
+  --color-primary:                   #97a9ff;
+  --color-primary-dim:               #3e65ff;
+  --color-primary-fixed:             #859aff;
+  --color-primary-fixed-dim:         #718bff;
+  --color-primary-container:         #859aff;
+  --color-on-primary:                #002283;
+  --color-on-primary-container:      #001867;
+  --color-on-primary-fixed:          #000000;
+  --color-on-primary-fixed-variant:  #00207e;
+  --color-inverse-primary:           #134af1;
+
+  /* === Secondary: Nebula Purple === */
+  --color-secondary:                 #b884ff;
+  --color-secondary-dim:             #9547f7;
+  --color-secondary-container:       #6e06d0;
+  --color-secondary-fixed:           #e1c7ff;
+  --color-secondary-fixed-dim:       #d6b6ff;
+  --color-on-secondary:              #2f0060;
+  --color-on-secondary-container:    #ebd8ff;
+  --color-on-secondary-fixed:        #4a0090;
+  --color-on-secondary-fixed-variant:#6f08d0;
+
+  /* === Tertiary: Atmospheric Cyan === */
+  --color-tertiary:                  #8ff5ff;
+  --color-tertiary-dim:              #00deec;
+  --color-tertiary-container:        #00eefc;
+  --color-tertiary-fixed:            #00eefc;
+  --color-tertiary-fixed-dim:        #00deec;
+  --color-on-tertiary:               #005d63;
+  --color-on-tertiary-container:     #005359;
+  --color-on-tertiary-fixed:         #003f43;
+  --color-on-tertiary-fixed-variant: #005e64;
+
+  /* === Error === */
+  --color-error:                     #ff6e84;
+  --color-error-dim:                 #d73357;
+  --color-error-container:           #a70138;
+  --color-on-error:                  #490013;
+  --color-on-error-container:        #ffb2b9;
+
+  /* === Text / On-Surface === */
+  --color-on-surface:                #ecedf6;
+  --color-on-surface-variant:        #a9abb3;
+  --color-on-background:             #ecedf6;
+  --color-inverse-surface:           #f9f9ff;
+  --color-inverse-on-surface:        #52555c;
+
+  /* === Borders / Outlines === */
+  --color-outline:                   #73757d;
+  --color-outline-variant:           #45484f;
+  --color-background:                #0b0e14;
+
+  /* === Typography === */
+  --font-sans:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+
+  /* === Easing === */
+  --ease-glide: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================================
+   GLOBAL BASE
+   ============================================================ */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-primary-container) 40%, transparent);
+    color: var(--color-on-primary-container);
+  }
+
+  /* Typography scale */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-on-surface);
+  }
+}
+
+/* ============================================================
+   DESIGN SYSTEM UTILITIES
+   ============================================================ */
+@layer utilities {
+
+  /* Font families */
+  .font-display { font-family: var(--font-display); }
+  .font-body    { font-family: var(--font-sans); }
+  .font-label   {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.625rem;
+    font-weight: 500;
+  }
+
+  /* === Glassmorphism panels === */
+  .glass-panel {
+    background: rgba(7, 9, 14, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .glass-nav {
+    background: rgba(7, 9, 14, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  /* === Ghost borders (DESIGN.md compliant — never 100% opaque) === */
+  .border-ghost {
+    border: 1px solid rgba(69, 72, 79, 0.15);
+  }
+
+  .border-ghost-primary {
+    border: 1px solid rgba(151, 169, 255, 0.2);
+  }
+
+  /* === Glow effects === */
+  .glow-primary {
+    box-shadow: 0 0 40px -10px rgba(151, 169, 255, 0.35);
+  }
+
+  .glow-secondary {
+    box-shadow: 0 0 50px -15px rgba(184, 132, 255, 0.25);
+  }
+
+  .glow-tertiary {
+    box-shadow: 0 0 40px -15px rgba(143, 245, 255, 0.2);
+  }
+
+  /* Hover glow on primary buttons */
+  .btn-glow-hover {
+    transition: box-shadow 300ms var(--ease-glide), transform 300ms var(--ease-glide);
+  }
+  .btn-glow-hover:hover {
+    box-shadow: 0 0 28px -4px rgba(62, 101, 255, 0.6);
+    transform: scale(1.02);
+  }
+  .btn-glow-hover:active {
+    transform: scale(0.97);
+  }
+
+  /* === Transitions: always Quintic === */
+  .transition-glide {
+    transition: all 300ms var(--ease-glide);
+  }
+
+  /* === Atmospheric ambient blobs === */
+  .ambient-blob-1 {
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: rgba(151, 169, 255, 0.12);
+    filter: blur(120px);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .ambient-blob-2 {
+    position: absolute;
+    bottom: -10%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: rgba(184, 132, 255, 0.08);
+    filter: blur(100px);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  /* === Status indicator colors === */
+  .status-on-time    { color: var(--color-tertiary);     text-shadow: 0 0 12px rgba(143, 245, 255, 0.5); }
+  .status-delayed    { color: var(--color-error);        text-shadow: 0 0 12px rgba(255, 110, 132, 0.5); }
+  .status-active     { color: var(--color-primary);      text-shadow: 0 0 12px rgba(151, 169, 255, 0.4); }
+
+  /* === Telemetry chip / indicator bar === */
+  .telemetry-chip {
+    background: var(--color-surface-container-highest);
+    border-left: 2px solid var(--color-primary);
+    padding: 0.375rem 0.875rem;
+    border-radius: 0.25rem;
+  }
+
+  /* === Scrollbar === */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-surface-container-low); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-outline-variant);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-outline); }
+
+  /* ============================================================
+     PHASE 6: MICRO-ANIMATIONS & POLISH
+     ============================================================ */
+
+  /* Live ticker marquee */
+  .ticker-track {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: ticker-scroll 60s linear infinite;
+  }
+  .ticker-track:hover {
+    animation-play-state: paused;
+  }
+
+  /* Shimmer skeleton loader */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(28,32,40,0) 0%,
+      rgba(28,32,40,0.8) 50%,
+      rgba(28,32,40,0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.6s ease-in-out infinite;
+  }
+
+  /* Pulse ring — radiating circle from a center dot */
+  .pulse-ring::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1px solid rgba(143, 245, 255, 0.4);
+    animation: pulse-ring 2s ease-out infinite;
+  }
+
+  /* Scan line — subtle moving highlight across dark panels */
+  .scan-line::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(151,169,255,0.03) 50%,
+      transparent 100%
+    );
+    background-size: 100% 200%;
+    animation: scan 4s linear infinite;
+    pointer-events: none;
+  }
+
+  /* Number flip — used for animated counters */
+  .count-flip {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease;
+  }
+  .count-flip.updating {
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   KEYFRAMES (must be outside @layer for global scope)
+   ============================================================ */
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(2.4); opacity: 0;   }
+}
+
+@keyframes scan {
+  0%   { background-position: 0 -100%; }
+  100% { background-position: 0 200%;  }
+}
+
+@keyframes float-up {
+  0%   { transform: translateY(0px);  opacity: 1; }
+  50%  { transform: translateY(-8px); opacity: 0.8; }
+  100% { transform: translateY(0px);  opacity: 1; }
+}
+
+@keyframes data-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(143,245,255,0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(143,245,255,0); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

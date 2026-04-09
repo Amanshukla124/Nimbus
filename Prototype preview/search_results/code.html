@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-dim": "#00deec",
+                    "on-primary-container": "#001867",
+                    "surface-container-high": "#1c2028",
+                    "on-surface-variant": "#a9abb3",
+                    "tertiary-container": "#00eefc",
+                    "surface-dim": "#0b0e14",
+                    "secondary-fixed": "#e1c7ff",
+                    "on-primary": "#002283",
+                    "on-secondary-fixed-variant": "#6f08d0",
+                    "primary-fixed-dim": "#718bff",
+                    "surface-container": "#161a21",
+                    "surface-variant": "#22262f",
+                    "tertiary-fixed": "#00eefc",
+                    "on-secondary": "#2f0060",
+                    "primary": "#97a9ff",
+                    "tertiary-fixed-dim": "#00deec",
+                    "on-tertiary": "#005d63",
+                    "secondary": "#b884ff",
+                    "outline": "#73757d",
+                    "inverse-surface": "#f9f9ff",
+                    "surface-container-lowest": "#000000",
+                    "inverse-on-surface": "#52555c",
+                    "on-primary-fixed-variant": "#00207e",
+                    "surface-container-low": "#10131a",
+                    "secondary-fixed-dim": "#d6b6ff",
+                    "on-error": "#490013",
+                    "primary-dim": "#3e65ff",
+                    "inverse-primary": "#134af1",
+                    "primary-container": "#859aff",
+                    "secondary-container": "#6e06d0",
+                    "on-primary-fixed": "#000000",
+                    "on-tertiary-fixed-variant": "#005e64",
+                    "outline-variant": "#45484f",
+                    "surface-bright": "#282c36",
+                    "on-secondary-container": "#ebd8ff",
+                    "on-surface": "#ecedf6",
+                    "error-container": "#a70138",
+                    "on-error-container": "#ffb2b9",
+                    "surface": "#0b0e14",
+                    "on-background": "#ecedf6",
+                    "on-tertiary-container": "#005359",
+                    "primary-fixed": "#859aff",
+                    "on-secondary-fixed": "#4a0090",
+                    "on-tertiary-fixed": "#003f43",
+                    "tertiary": "#8ff5ff",
+                    "surface-container-highest": "#22262f",
+                    "secondary-dim": "#9547f7",
+                    "error-dim": "#d73357",
+                    "surface-tint": "#97a9ff",
+                    "background": "#0b0e14",
+                    "error": "#ff6e84"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(16, 19, 26, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .text-glow-tertiary {
+            text-shadow: 0 0 10px rgba(143, 245, 255, 0.4);
+        }
+        .text-glow-error {
+            text-shadow: 0 0 10px rgba(255, 110, 132, 0.4);
+        }
+        .horizon-gauge {
+            background: conic-gradient(from 180deg at 50% 50%, #97a9ff 0deg, #b884ff 180deg, #8ff5ff 360deg);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface-container-lowest/60 backdrop-blur-xl border-b border-outline-variant/15 shadow-2xl shadow-blue-900/20 flex justify-between items-center px-8 py-4 w-full">
+<div class="flex items-center gap-8">
+<span class="font-headline text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent tracking-tight">Nimbus</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-headline tracking-tight text-on-surface-variant hover:text-white transition-colors text-primary border-b-2 border-primary pb-1" href="#">Live Map</a>
+<a class="font-headline tracking-tight text-on-surface-variant hover:text-white transition-colors" href="#">Insights</a>
+<a class="font-headline tracking-tight text-on-surface-variant hover:text-white transition-colors" href="#">Community</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant/40 transition-all duration-300 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant/40 transition-all duration-300 rounded-full">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="ml-4 px-5 py-2 bg-gradient-to-r from-primary to-secondary rounded-md font-medium text-on-primary-container scale-95 active:scale-90 transition-transform">
+                Sign In
+            </button>
+</div>
+</nav>
+<main class="pt-24 pb-20 px-6 max-w-7xl mx-auto min-h-screen">
+<!-- Hero Search Section -->
+<section class="relative py-16 mb-12">
+<div class="absolute inset-0 -z-10 overflow-hidden opacity-20">
+<img class="w-full h-full object-cover grayscale blur-sm" data-alt="dramatic wide shot of a commercial jet flying through dark indigo storm clouds with faint city lights below" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-38UqTDIkr88yqMW4iLSOSZqPpc1oJpF76oTlvv6AiGXyVWNtvpMhDWskC1TY14yGiSNRo_zzLHc5y3fAOWAAfr6Rl57Ka457Mwfos0NHt2eatrgvAKQ6RT7jwnlaYiwfGaE03x9xyHl0TxiO6pQUAEbJ3yHZyj7PnYCS-pucoHhyvuev4veDGMTXjuj_xiWMX9-m2jXUfn4AEmkm0e52oc-JZJIpL99dazCw3LA8YvIr23vE_Sq4QpBmgKU2Av9wb4IKrNU0ruw"/>
+</div>
+<div class="max-w-3xl mx-auto text-center space-y-8">
+<h1 class="font-headline text-5xl md:text-6xl font-bold tracking-tighter text-on-surface">
+                    Atmospheric <span class="text-primary">Intelligence</span>
+</h1>
+<p class="text-on-surface-variant font-light text-lg max-w-xl mx-auto">
+                    Global flight surveillance and route optimization powered by real-time telemetry.
+                </p>
+<!-- Search Container -->
+<div class="glass-panel p-2 rounded-xl border border-outline-variant/20 shadow-2xl">
+<div class="flex flex-col md:flex-row gap-2">
+<div class="flex-1 relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">search</span>
+<input class="w-full bg-surface-container-lowest/40 border-none rounded-lg pl-12 py-5 text-on-surface placeholder:text-outline focus:ring-1 focus:ring-primary/50 transition-all text-lg font-light" placeholder="Flight # (e.g. AA204) or Route (JFK-LHR)" type="text"/>
+</div>
+<button class="bg-gradient-to-r from-primary to-secondary px-8 py-5 rounded-lg font-bold text-on-primary-container hover:shadow-[0_0_20px_rgba(151,169,255,0.4)] transition-all flex items-center justify-center gap-2">
+<span>ANALYZE TRAJECTORY</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Results -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Active Tracking Sidebar -->
+<div class="lg:col-span-4 space-y-6">
+<div class="bg-surface-container-low rounded-xl p-6 border-t border-primary/20">
+<h3 class="font-label text-xs font-bold tracking-widest text-primary mb-6 uppercase">Current Radar Focus</h3>
+<div class="flex items-center justify-between mb-8">
+<div>
+<p class="text-3xl font-headline font-bold">NIM-482</p>
+<p class="text-on-surface-variant text-sm font-label uppercase">Stratospheric Courier</p>
+</div>
+<div class="w-16 h-16 rounded-full border-2 border-tertiary/20 flex items-center justify-center relative">
+<span class="material-symbols-outlined text-tertiary">flight_takeoff</span>
+<div class="absolute inset-0 horizon-gauge rounded-full opacity-20 blur-sm"></div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center py-3 border-b border-outline-variant/15">
+<span class="text-on-surface-variant text-sm">Altitude</span>
+<span class="text-tertiary font-headline font-bold text-glow-tertiary">38,000 FT</span>
+</div>
+<div class="flex justify-between items-center py-3 border-b border-outline-variant/15">
+<span class="text-on-surface-variant text-sm">Ground Speed</span>
+<span class="text-on-surface font-headline font-bold">542 KTS</span>
+</div>
+<div class="flex justify-between items-center py-3">
+<span class="text-on-surface-variant text-sm">ETA (LHR)</span>
+<span class="text-on-surface font-headline font-bold">06:42 UTC</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-6 overflow-hidden relative group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-700" data-alt="top down view of airport runway lights at night with a cinematic blue and teal color grade" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtvjySMvYa2dnd_X5WSQj-BcOhMGad80tEGx351MlYhdCN37-8QLc2esYNL5gTNAaCMjXCt1OFP_bFfPKeKZvX2s4zXEoNkuEjXbO0r3hLhyibbBGx2iQBAJi5BXocSpb9nyBwfbrG4JYLYLZQJ-Q_qoZF_gfRhrV6oVIY_8d_W74PRV8vFtdV4Je6UqK0tfWhfMtls29fNQZIJ6UWkpOZYfbptSvg37LG92t3ISGmSk87PgyeAE4jH-qPeVlciWK-TKpRYQHJO8M"/>
+<div class="relative z-10">
+<h3 class="font-label text-xs font-bold tracking-widest text-secondary mb-2 uppercase">Weather Intelligence</h3>
+<p class="text-on-surface text-xl font-headline leading-tight">North Atlantic Jet Stream Intensifying</p>
+<button class="mt-4 text-secondary text-sm font-bold flex items-center gap-1 group/btn">
+                            View Wind Map <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Results Feed -->
+<div class="lg:col-span-8 space-y-4">
+<div class="flex justify-between items-end mb-6">
+<h2 class="font-headline text-2xl font-bold">Search Results <span class="text-on-surface-variant text-lg font-light ml-2">(4 Matches)</span></h2>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container-high rounded text-xs font-label uppercase tracking-widest hover:bg-surface-bright transition-colors">Sort by ETA</button>
+<button class="px-4 py-2 bg-surface-container-high rounded text-xs font-label uppercase tracking-widest hover:bg-surface-bright transition-colors">Status</button>
+</div>
+</div>
+<!-- Result Card 1 -->
+<div class="bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 rounded-xl p-1 group">
+<div class="bg-surface-container-low rounded-lg p-5 flex flex-col md:flex-row md:items-center gap-6">
+<div class="flex items-center gap-4 min-w-[140px]">
+<div class="w-12 h-12 rounded bg-surface-variant/40 flex items-center justify-center border border-outline-variant/15 overflow-hidden">
+<img class="w-8 h-8 object-contain" data-alt="minimalist logo of an airline featuring a stylised bird in deep blue on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANbOQ-t5WSpJD-SDc2mDsE6_h4ErFllbDj53FPattdYdNnfrUCTBIUekPia2XOYIifu6dfhfSToJiV0QgeNpjz-8H4eaZxGFuA_Hgy8Ym2yfdVfxp-TFa4ow7KFWcxiXQvRkLpNLzjLziVFARm0VQ8k81GFpzabvlQ6B8xPbUHm3likPbLr2IDHkaIkhJG9VCubQrkUULx7tk8Gomhkd43otBceN6wfY4b95A4UmyJKZ_VeITntPY11akkqFxigWL5bDK5pUR4Zfw"/>
+</div>
+<div>
+<p class="text-xs font-label text-on-surface-variant tracking-wider uppercase">Nimbus Air</p>
+<p class="font-headline font-bold">NA 2204</p>
+</div>
+</div>
+<div class="flex-1 flex items-center justify-between px-4">
+<div class="text-center">
+<p class="text-2xl font-headline font-bold">JFK</p>
+<p class="text-xs text-on-surface-variant font-label">14:15</p>
+</div>
+<div class="flex-1 px-8 relative flex flex-col items-center">
+<div class="w-full h-[1px] bg-outline-variant/30 relative">
+<span class="material-symbols-outlined absolute left-1/2 -top-3 -translate-x-1/2 text-primary text-lg" style="font-variation-settings: 'FILL' 1;">flight</span>
+</div>
+<span class="mt-3 text-[10px] font-label uppercase tracking-[0.2em] text-outline">7h 25m · Nonstop</span>
+</div>
+<div class="text-center">
+<p class="text-2xl font-headline font-bold">LHR</p>
+<p class="text-xs text-on-surface-variant font-label">06:40 (+1)</p>
+</div>
+</div>
+<div class="flex items-center gap-6 md:border-l border-outline-variant/15 md:pl-6">
+<div class="text-right">
+<p class="text-xs font-label text-tertiary uppercase tracking-widest text-glow-tertiary mb-1">On Time</p>
+<p class="text-xs text-on-surface-variant">Gate B32</p>
+</div>
+<button class="bg-surface-bright p-3 rounded-lg text-primary hover:bg-primary hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined">analytics</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Result Card 2 -->
+<div class="bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 rounded-xl p-1 group">
+<div class="bg-surface-container-low rounded-lg p-5 flex flex-col md:flex-row md:items-center gap-6">
+<div class="flex items-center gap-4 min-w-[140px]">
+<div class="w-12 h-12 rounded bg-surface-variant/40 flex items-center justify-center border border-outline-variant/15 overflow-hidden">
+<img class="w-8 h-8 object-contain" data-alt="minimalist aviation logo with a sharp geometric mountain peak in red and silver" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvuFLSm6CsY1Sclok0aOXLGrmZ405rFp96eNrV3r0n63pQojdnzWfObW-B3w-KxVfDhjZB-G5881SDFod2aXuWpuKdABbhqkuZRCMe_rpc66dz24WsHB6NiZa0rGAYIHL9CsGLxeAcN22vgaIEiHJmnSl9-v_DGLCbLs79-myX6RuGB_NHdQLpX7W2PdgWnhfZkVlsL_DIGMJ0WeZOVMwOObKdxBR_lsNi34byzujb4ZfwLeB6_a7pG05Kz73qbahNhcerCkX_zHM"/>
+</div>
+<div>
+<p class="text-xs font-label text-on-surface-variant tracking-wider uppercase">Skyline Global</p>
+<p class="font-headline font-bold">SG 088</p>
+</div>
+</div>
+<div class="flex-1 flex items-center justify-between px-4">
+<div class="text-center">
+<p class="text-2xl font-headline font-bold">JFK</p>
+<p class="text-xs text-on-surface-variant font-label">15:50</p>
+</div>
+<div class="flex-1 px-8 relative flex flex-col items-center">
+<div class="w-full h-[1px] bg-outline-variant/30 relative">
+<span class="material-symbols-outlined absolute left-1/2 -top-3 -translate-x-1/2 text-primary/50 text-lg">flight</span>
+</div>
+<span class="mt-3 text-[10px] font-label uppercase tracking-[0.2em] text-outline">7h 10m · Nonstop</span>
+</div>
+<div class="text-center">
+<p class="text-2xl font-headline font-bold">LHR</p>
+<p class="text-xs text-on-surface-variant font-label">08:00 (+1)</p>
+</div>
+</div>
+<div class="flex items-center gap-6 md:border-l border-outline-variant/15 md:pl-6">
+<div class="text-right">
+<p class="text-xs font-label text-error uppercase tracking-widest text-glow-error mb-1">Delayed 40m</p>
+<p class="text-xs text-on-surface-variant">Gate A12</p>
+</div>
+<button class="bg-surface-bright p-3 rounded-lg text-primary hover:bg-primary hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined">analytics</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Result Card 3 -->
+<div class="bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 rounded-xl p-1 group">
+<div class="bg-surface-container-low rounded-lg p-5 flex flex-col md:flex-row md:items-center gap-6">
+<div class="flex items-center gap-4 min-w-[140px]">
+<div class="w-12 h-12 rounded bg-surface-variant/40 flex items-center justify-center border border-outline-variant/15 overflow-hidden">
+<img class="w-8 h-8 object-contain" data-alt="clean modernist corporate airline logo with three sweeping parallel arcs in blue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4TrYIoXK1ZfZQdtlW6DYOSgf29-b5gtj-TE-bYNKSTI2yIScFIsyrEXUmMells_fwEv3IvWp-ssvWIqeIEDQZ8tUAvuKy5g1c3t3vzmiAHqavsjfCbDWaFhjaFRu5p2ZT3-zwDdmnRqAH8z-1IjLG18o9sMECiFgVL8QPeH3UldogQnL4ygylLPnTAHYCqwqZQLwIC_RHmlNbyDjxkKlZLMAD9-23ok27Cjv8otBXGW5WLLEWJp2kjjEAHW2kKUmMRvltiWXa2W8"/>
+</div>
+<div>
+<p class="text-xs font-label text-on-surface-variant tracking-wider uppercase">Horizon Connect</p>
+<p class="font-headline font-bold">HC 911</p>
+</div>
+</div>
+<div class="flex-1 flex items-center justify-between px-4">
+<div class="text-center">
+<p class="text-2xl font-headline font-bold">EWR</p>
+<p class="text-xs text-on-surface-variant font-label">16:30</p>
+</div>
+<div class="flex-1 px-8 relative flex flex-col items-center">
+<div class="w-full h-[1px] bg-outline-variant/30 relative">
+<span class="material-symbols-outlined absolute left-1/2 -top-3 -translate-x-1/2 text-primary/50 text-lg">flight</span>
+</div>
+<span class="mt-3 text-[10px] font-label uppercase tracking-[0.2em] text-outline">7h 45m · Nonstop</span>
+</div>
+<div class="text-center">
+<p class="text-2xl font-headline font-bold">LHR</p>
+<p class="text-xs text-on-surface-variant font-label">09:15 (+1)</p>
+</div>
+</div>
+<div class="flex items-center gap-6 md:border-l border-outline-variant/15 md:pl-6">
+<div class="text-right">
+<p class="text-xs font-label text-tertiary uppercase tracking-widest text-glow-tertiary mb-1">On Time</p>
+<p class="text-xs text-on-surface-variant">Gate C04</p>
+</div>
+<button class="bg-surface-bright p-3 rounded-lg text-primary hover:bg-primary hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined">analytics</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Result Card 4 -->
+<div class="bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 rounded-xl p-1 group">
+<div class="bg-surface-container-low rounded-lg p-5 flex flex-col md:flex-row md:items-center gap-6">
+<div class="flex items-center gap-4 min-w-[140px]">
+<div class="w-12 h-12 rounded bg-surface-variant/40 flex items-center justify-center border border-outline-variant/15 overflow-hidden">
+<img class="w-8 h-8 object-contain" data-alt="airline logo with a stylized silver delta wing against a dark navy circle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF8Lc7JZWb22Tr8sTSDIIu7gRYukKM-TW0bBEqErKqIi9YuI6MXwl7aR9q9pfZjFaobHrZWmjdKk_qgonC5DjNeDnDOAdoSAhWCHzHk_XXkb2CNZks_LDrzf2QF8h7u1MFdRaGh3YTrVwyE_JBvY6HG_WYQ0mC5L3uk3Gq3Qtvm9pP5qqiLwtpsTDb_zquSrBbYWnBnWj5yvOs8chs1Ui6tU0YS7h4D1F8u5vEk-zI8enH3TtiNrBRYQAc8009mTZo_K4iDz_PYe4"/>
+</div>
+<div>
+<p class="text-xs font-label text-on-surface-variant tracking-wider uppercase">Delta Force</p>
+<p class="font-headline font-bold">DF 405</p>
+</div>
+</div>
+<div class="flex-1 flex items-center justify-between px-4">
+<div class="text-center">
+<p class="text-2xl font-headline font-bold">JFK</p>
+<p class="text-xs text-on-surface-variant font-label">18:00</p>
+</div>
+<div class="flex-1 px-8 relative flex flex-col items-center">
+<div class="w-full h-[1px] bg-outline-variant/30 relative">
+<span class="material-symbols-outlined absolute left-1/2 -top-3 -translate-x-1/2 text-primary/50 text-lg">flight</span>
+</div>
+<span class="mt-3 text-[10px] font-label uppercase tracking-[0.2em] text-outline">7h 30m · Nonstop</span>
+</div>
+<div class="text-center">
+<p class="text-2xl font-headline font-bold">LHR</p>
+<p class="text-xs text-on-surface-variant font-label">10:30 (+1)</p>
+</div>
+</div>
+<div class="flex items-center gap-6 md:border-l border-outline-variant/15 md:pl-6">
+<div class="text-right">
+<p class="text-xs font-label text-tertiary uppercase tracking-widest text-glow-tertiary mb-1">On Time</p>
+<p class="text-xs text-on-surface-variant">Gate T4-12</p>
+</div>
+<button class="bg-surface-bright p-3 rounded-lg text-primary hover:bg-primary hover:text-on-primary-container transition-all">
+<span class="material-symbols-outlined">analytics</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface w-full py-12 px-8 border-t border-outline-variant/15 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col gap-2">
+<span class="text-lg font-bold text-on-surface font-headline">Nimbus</span>
+<p class="font-['Inter'] text-xs tracking-widest uppercase text-outline">© 2024 Nimbus Atmospheric Intelligence. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-xs tracking-widest uppercase text-outline hover:text-primary transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs tracking-widest uppercase text-outline hover:text-primary transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-xs tracking-widest uppercase text-outline hover:text-primary transition-colors opacity-80 hover:opacity-100 transition-opacity" href="#">Cookie Policy</a>
+</div>
+</footer>
+</body></html>

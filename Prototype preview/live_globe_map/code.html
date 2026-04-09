@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-dim": "#00deec",
+                    "on-primary-container": "#001867",
+                    "surface-container-high": "#1c2028",
+                    "on-surface-variant": "#a9abb3",
+                    "tertiary-container": "#00eefc",
+                    "surface-dim": "#0b0e14",
+                    "secondary-fixed": "#e1c7ff",
+                    "on-primary": "#002283",
+                    "on-secondary-fixed-variant": "#6f08d0",
+                    "primary-fixed-dim": "#718bff",
+                    "surface-container": "#161a21",
+                    "surface-variant": "#22262f",
+                    "tertiary-fixed": "#00eefc",
+                    "on-secondary": "#2f0060",
+                    "primary": "#97a9ff",
+                    "tertiary-fixed-dim": "#00deec",
+                    "on-tertiary": "#005d63",
+                    "secondary": "#b884ff",
+                    "outline": "#73757d",
+                    "inverse-surface": "#f9f9ff",
+                    "surface-container-lowest": "#000000",
+                    "inverse-on-surface": "#52555c",
+                    "on-primary-fixed-variant": "#00207e",
+                    "surface-container-low": "#10131a",
+                    "secondary-fixed-dim": "#d6b6ff",
+                    "on-error": "#490013",
+                    "primary-dim": "#3e65ff",
+                    "inverse-primary": "#134af1",
+                    "primary-container": "#859aff",
+                    "secondary-container": "#6e06d0",
+                    "on-primary-fixed": "#000000",
+                    "on-tertiary-fixed-variant": "#005e64",
+                    "outline-variant": "#45484f",
+                    "surface-bright": "#282c36",
+                    "on-secondary-container": "#ebd8ff",
+                    "on-surface": "#ecedf6",
+                    "error-container": "#a70138",
+                    "on-error-container": "#ffb2b9",
+                    "surface": "#0b0e14",
+                    "on-background": "#ecedf6",
+                    "on-tertiary-container": "#005359",
+                    "primary-fixed": "#859aff",
+                    "on-secondary-fixed": "#4a0090",
+                    "on-tertiary-fixed": "#003f43",
+                    "tertiary": "#8ff5ff",
+                    "surface-container-highest": "#22262f",
+                    "secondary-dim": "#9547f7",
+                    "error-dim": "#d73357",
+                    "surface-tint": "#97a9ff",
+                    "background": "#0b0e14",
+                    "error": "#ff6e84"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #0b0e14; color: #ecedf6; font-family: 'Inter', sans-serif; overflow: hidden; }
+        .glass-panel { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+        .radar-sweep {
+            background: conic-gradient(from 0deg, transparent 0deg, rgba(151, 169, 255, 0.1) 90deg, transparent 360deg);
+        }
+        .flight-arc {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+        }
+        .text-glow { text-shadow: 0 0 10px rgba(143, 245, 255, 0.4); }
+    </style>
+</head>
+<body class="h-screen w-screen relative select-none">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 bg-surface-container-lowest/60 backdrop-blur-xl border-b border-outline-variant/15 shadow-2xl shadow-blue-900/20 flex justify-between items-center px-8 py-4 w-full">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent font-['Space_Grotesk'] tracking-tight">Nimbus</span>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-['Space_Grotesk'] tracking-tight text-primary border-b-2 border-primary pb-1" href="#">Live Map</a>
+<a class="font-['Space_Grotesk'] tracking-tight text-on-surface-variant hover:text-white transition-colors" href="#">Insights</a>
+<a class="font-['Space_Grotesk'] tracking-tight text-on-surface-variant hover:text-white transition-colors" href="#">Community</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant/40 transition-all duration-300 p-2 rounded-full">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant/40 transition-all duration-300 p-2 rounded-full">settings</button>
+<button class="bg-gradient-to-r from-primary to-secondary px-6 py-2 rounded-md font-medium text-on-primary-container scale-95 active:scale-90 transition-transform">Sign In</button>
+</div>
+</nav>
+<!-- Main Map Canvas -->
+<main class="w-full h-full relative overflow-hidden bg-surface">
+<!-- 3D Globe Mockup with Mapbox-style placeholder -->
+<div class="absolute inset-0 bg-[#0b0e14] flex items-center justify-center">
+<div class="relative w-full h-full opacity-60">
+<img alt="Topographic night view of Earth from space with glowing city lights" class="w-full h-full object-cover" data-alt="Cinematic satellite view of earth at night with glowing blue and purple city lights and intricate network of digital data lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmeeS7UIK8kvxctiYcZ1iosjV6UJgjyv2rlhorkdT9RS--IhzzmIxiVv15LzbnlxTloMxVBdCkx4oRzyc6Z4mT4ZXPKhMjL39pIMtL5Ot55LGe1mFOUSg1fLm_H3Ghaj_R8x0usCJbz36yovByHQhJ4GnnHUKhvL3FmQSO87C9lISnz-qEOimr6guaJQ2dQVdkDbP2-B8MecaHXzx5KYLbQD7KYYGWiUsNAqGtptW76F-AFez0IlHMLYYly7BjikoCRqeIX9uPwMY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-surface/40"></div>
+<!-- Animated Arcs (Static Visual Rep) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-40">
+<path class="flight-arc" d="M 400 500 Q 800 200 1200 500" fill="none" stroke="url(#arcGradient)" stroke-width="2"></path>
+<path class="opacity-50" d="M 200 600 Q 600 300 1000 600" fill="none" stroke="url(#arcGradient)" stroke-width="1"></path>
+<path d="M 600 800 Q 900 400 1400 700" fill="none" stroke="url(#arcGradient)" stroke-width="1.5"></path>
+<defs>
+<lineargradient id="arcGradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#97a9ff"></stop>
+<stop offset="100%" stop-color="#8ff5ff"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+<!-- Radar Overlay Elements -->
+<div class="absolute inset-0 pointer-events-none">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-primary/10 rounded-full"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border border-primary/5 rounded-full"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full radar-sweep opacity-20"></div>
+</div>
+<!-- Left Sidebar: Filters -->
+<aside class="absolute left-6 top-24 bottom-6 w-80 flex flex-col gap-6 z-10">
+<div class="glass-panel bg-surface-container-lowest/60 border border-outline-variant/15 p-6 rounded-xl flex flex-col gap-6">
+<div>
+<span class="font-label text-xs tracking-widest uppercase text-outline mb-4 block">Navigation Filters</span>
+<h2 class="font-headline text-xl font-bold text-on-surface">Atmospheric Intel</h2>
+</div>
+<!-- Filter: Airline -->
+<div class="flex flex-col gap-3">
+<label class="text-xs font-label text-on-surface-variant uppercase tracking-wider">Airline Carrier</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border-none rounded-md py-3 px-4 text-sm text-on-surface focus:ring-1 focus:ring-primary/50 appearance-none">
+<option>All Commercial Fleets</option>
+<option>Nimbus Core</option>
+<option>Stratosphere Express</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Filter: Altitude Range -->
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<label class="text-xs font-label text-on-surface-variant uppercase tracking-wider">Altitude</label>
+<span class="text-tertiary text-xs font-mono">35,000 FT</span>
+</div>
+<input class="w-full h-1 bg-surface-container-high rounded-full appearance-none accent-primary cursor-pointer" type="range"/>
+</div>
+<!-- Filter: Speed -->
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<label class="text-xs font-label text-on-surface-variant uppercase tracking-wider">Velocity</label>
+<span class="text-tertiary text-xs font-mono">MACH 0.85</span>
+</div>
+<div class="flex gap-1 h-6 items-end">
+<div class="w-full h-2 bg-primary rounded-sm"></div>
+<div class="w-full h-3 bg-primary rounded-sm"></div>
+<div class="w-full h-4 bg-primary rounded-sm"></div>
+<div class="w-full h-5 bg-primary rounded-sm"></div>
+<div class="w-full h-3 bg-surface-container-high rounded-sm"></div>
+<div class="w-full h-2 bg-surface-container-high rounded-sm"></div>
+</div>
+</div>
+<button class="mt-4 py-3 bg-surface-bright/20 border border-outline-variant hover:border-primary/50 transition-all rounded-md text-sm font-medium text-primary">Apply Telemetry Overlays</button>
+</div>
+<!-- Active Flight Card -->
+<div class="glass-panel bg-surface-container-lowest/60 border border-outline-variant/15 p-6 rounded-xl overflow-hidden relative group">
+<div class="absolute top-0 left-0 w-full h-[2px] bg-primary shadow-[0_0_10px_rgba(151,169,255,0.6)]"></div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="text-[10px] font-label text-tertiary uppercase tracking-widest flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span> Tracking Active
+                        </div>
+<h3 class="font-headline font-bold text-lg text-white mt-1">NIM-4029</h3>
+</div>
+<span class="material-symbols-outlined text-primary" data-weight="fill">flight_takeoff</span>
+</div>
+<div class="flex items-center gap-4 py-2 border-y border-outline-variant/15 my-4">
+<div class="flex-1">
+<span class="text-[10px] font-label text-outline uppercase">Origin</span>
+<div class="font-headline font-bold text-on-surface text-glow">LHR</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant">trending_flat</span>
+<div class="flex-1 text-right">
+<span class="text-[10px] font-label text-outline uppercase">Dest</span>
+<div class="font-headline font-bold text-on-surface text-glow">JFK</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<div class="text-[10px] font-label text-outline uppercase">Fuel Intel</div>
+<div class="text-sm font-medium text-on-surface">82% Est.</div>
+</div>
+<div class="text-right">
+<div class="text-[10px] font-label text-outline uppercase">ETA</div>
+<div class="text-sm font-medium text-on-surface">04:22 PM</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Right Sidebar: Data Intelligence -->
+<aside class="absolute right-6 top-24 bottom-6 w-80 flex flex-col gap-6 z-10">
+<!-- Global Stats (Bento-style items) -->
+<div class="grid grid-cols-1 gap-4">
+<div class="glass-panel bg-surface-container-high/40 p-5 rounded-xl border border-outline-variant/15">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs font-label text-outline-variant uppercase tracking-widest">Active Arcs</span>
+<span class="material-symbols-outlined text-tertiary-dim text-sm">hub</span>
+</div>
+<div class="text-3xl font-headline font-bold text-on-surface">14,802</div>
+<div class="mt-2 h-1 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-dim w-[68%]"></div>
+</div>
+</div>
+<!-- Horizon Gauge Component (Signature) -->
+<div class="glass-panel bg-surface-container-high/40 p-5 rounded-xl border border-outline-variant/15 flex flex-col items-center">
+<span class="text-xs font-label text-outline-variant uppercase tracking-widest mb-4 w-full">Flight Density</span>
+<div class="relative w-40 h-24 flex items-center justify-center overflow-hidden">
+<svg class="w-full h-full transform -rotate-180" viewbox="0 0 100 50">
+<path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#161a21" stroke-linecap="round" stroke-width="8"></path>
+<path d="M 10 50 A 40 40 0 0 1 70 20" fill="none" stroke="url(#gaugeGrad)" stroke-linecap="round" stroke-width="8"></path>
+<defs>
+<lineargradient id="gaugeGrad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#97a9ff"></stop>
+<stop offset="100%" stop-color="#8ff5ff"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="absolute bottom-0 text-2xl font-headline font-bold text-on-surface">92.4</div>
+</div>
+<span class="text-[10px] font-label text-tertiary mt-2 uppercase">Critical Capacity Near NYC</span>
+</div>
+<div class="glass-panel bg-surface-container-high/40 p-5 rounded-xl border border-outline-variant/15">
+<span class="text-xs font-label text-outline-variant uppercase tracking-widest block mb-4">Traffic Insights</span>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<div class="flex-1">
+<div class="text-xs font-medium text-on-surface">Weather Alert</div>
+<div class="text-[10px] text-outline">Turbulence cluster over Atlantic</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<div class="flex-1">
+<div class="text-xs font-medium text-on-surface">Optimal Route</div>
+<div class="text-[10px] text-outline">Jetstream favorability at FL380</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Mini Map Overview (Map Location Component) -->
+<div class="mt-auto glass-panel bg-surface-container-lowest/60 rounded-xl border border-outline-variant/15 p-2 overflow-hidden h-48 relative">
+<div class="absolute inset-0 grayscale opacity-40">
+<img alt="Satellite map view of the North Atlantic" class="w-full h-full object-cover" data-alt="Monochrome satellite imagery of the Atlantic Ocean with light digital route overlays" data-location="Atlantic Ocean" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwZD1TSV_OCBYsBVB_xLiqUt8z0XKVXOEs5oePCWHox2eneD_oQEFdiDu4O71_fdGRpzfCp33TSVzWpdaiCo4HO87mKyYrK4KYmpS9tZY1BKtEgnO_uAaBAR7LneZ30KLb5Qma0ECLHZOeAfemGsUY1zv8Vbc6OjB1lBIKyqIw5IUVihoARCh_FlTDOGb4iigzuycu04m2ibd1MrtxfTpQyRlvZuUA-uSNFrzWXBZNrbTev70GwWOeObo0EwLCL4BW3hnNH-kKtTE"/>
+</div>
+<div class="relative h-full flex flex-col justify-between p-3">
+<span class="text-[10px] font-label bg-surface-dim/80 backdrop-blur px-2 py-1 rounded self-start border border-outline-variant/15">ATLANTIC_QUAD_4</span>
+<div class="flex justify-center">
+<span class="material-symbols-outlined text-primary text-3xl animate-pulse">location_on</span>
+</div>
+<div class="bg-surface-dim/80 backdrop-blur p-2 rounded border border-outline-variant/15">
+<div class="flex justify-between text-[10px] font-mono">
+<span>LAT: 40.7128</span>
+<span>LON: 74.0060</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Tooltip Hover Mockup -->
+<div class="absolute top-1/2 left-[55%] -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<div class="glass-panel bg-surface-container-high/90 border border-primary/40 px-3 py-2 rounded-lg shadow-xl shadow-primary/10 flex flex-col items-center">
+<span class="text-[10px] font-bold text-white mb-1">DLH-422</span>
+<span class="text-[8px] font-label text-tertiary uppercase tracking-tighter">ALT: 32,000 FT</span>
+</div>
+</div>
+</main>
+<!-- Map Controls -->
+<div class="fixed bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4 glass-panel bg-surface-container-low/80 border border-outline-variant/15 p-2 rounded-full">
+<button class="p-3 hover:bg-surface-variant/40 rounded-full transition-colors material-symbols-outlined text-on-surface">zoom_in</button>
+<div class="h-6 w-[1px] bg-surface-variant/40"></div>
+<button class="p-3 hover:bg-surface-variant/40 rounded-full transition-colors material-symbols-outlined text-on-surface">zoom_out</button>
+<div class="h-6 w-[1px] bg-surface-variant/40"></div>
+<button class="p-3 hover:bg-surface-variant/40 rounded-full transition-colors material-symbols-outlined text-on-surface">explore</button>
+<div class="h-6 w-[1px] bg-surface-variant/40"></div>
+<button class="p-3 hover:bg-surface-variant/40 rounded-full transition-colors material-symbols-outlined text-on-surface">layers</button>
+</div>
+</body></html>
